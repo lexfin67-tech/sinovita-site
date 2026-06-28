@@ -12,12 +12,12 @@
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="topbar-inner">
-    <div>📍 Sourcing office · Shanghai, China — partnered manufacturing across Mainland China</div>
+    <div data-i18n="topbar-office">📍 Sourcing office · Shanghai, China — partnered manufacturing across Mainland China</div>
     <div class="topbar-right">
       <a href="mailto:sales@sinovita-ingredients.com">✉ sales@sinovita-ingredients.com</a>
-      <a href="#">中文</a>
-      <a href="#">EN</a>
-      <a href="#">РУС</a>
+      <a href="?lang=zh" class="lang-btn" data-lang="zh">中文</a>
+      <a href="?lang=en" class="lang-btn" data-lang="en">EN</a>
+      <a href="?lang=ru" class="lang-btn" data-lang="ru">РУС</a>
     </div>
   </div>
 </div>
@@ -34,12 +34,12 @@
       </div>
     </a>
     <nav>
-      <a href="index.html" class="active">Home</a>
-      <a href="products.html">Products</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <a href="index.html" class="active" data-i18n="nav-home">Home</a>
+      <a href="products.html" data-i18n="nav-products">Products</a>
+      <a href="about.html" data-i18n="nav-about">About</a>
+      <a href="contact.html" data-i18n="nav-contact">Contact</a>
     </nav>
-    <a href="contact.html" class="header-cta">Request Quote</a>
+    <a href="contact.html" class="header-cta" data-i18n="nav-cta">Request Quote</a>
   </div>
 </header>
 
@@ -47,34 +47,34 @@
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-left">
-      <span class="hero-badge">Factory-Direct Sourcing</span>
-      <h1>Nutraceutical &amp;<br><span>Cosmetic Raw Materials</span></h1>
-      <div class="hero-sub">营养与化妆品原料 · 工厂直采</div>
-      <p class="hero-desc">
+      <span class="hero-badge" data-i18n="hero-badge">Factory-Direct Sourcing</span>
+      <h1 data-i18n-html="hero-h1">Nutraceutical &amp;<br><span>Cosmetic Raw Materials</span></h1>
+      <div class="hero-sub" data-i18n="hero-sub">营养与化妆品原料 · 工厂直采</div>
+      <p class="hero-desc" data-i18n="hero-desc">
         We connect you straight to GMP-certified Chinese manufacturers for plant extracts,
         mineral chelates, amino acids, vitamins and capsules. You get factory-direct pricing
         with the original manufacturer's COA and documentation — we handle sourcing, QC
         coordination, logistics and customs.
       </p>
       <div class="hero-actions">
-        <a href="products.html" class="btn-primary">Browse Products</a>
-        <a href="contact.html" class="btn-outline">Get a Quote</a>
+        <a href="products.html" class="btn-primary" data-i18n="hero-btn-browse">Browse Products</a>
+        <a href="contact.html" class="btn-outline" data-i18n="hero-btn-quote">Get a Quote</a>
       </div>
     </div>
     <div class="hero-stats">
-      <h3>What We Do</h3>
+      <h3 data-i18n="hero-stats-title">What We Do</h3>
       <div class="stat-row">
         <div class="stat-item">
           <div class="stat-num">200<span>+ SKU</span></div>
-          <div class="stat-label">Raw materials sourced</div>
+          <div class="stat-label" data-i18n="stat-sku-label">Raw materials sourced</div>
         </div>
         <div class="stat-item">
           <div class="stat-num">40<span>+</span></div>
-          <div class="stat-label">Partner manufacturers</div>
+          <div class="stat-label" data-i18n="stat-mfr-label">Partner manufacturers</div>
         </div>
         <div class="stat-item">
           <div class="stat-num">1<span> day</span></div>
-          <div class="stat-label">Typical quote turnaround</div>
+          <div class="stat-label" data-i18n="stat-quote-label">Typical quote turnaround</div>
         </div>
       </div>
     </div>
@@ -100,8 +100,8 @@
 <section class="section">
   <div class="section-inner">
     <div class="section-header">
-      <div class="section-eyebrow">Our Range</div>
-      <h2 class="section-title">Product Categories</h2>
+      <div class="section-eyebrow" data-i18n="cats-eyebrow">Our Range</div>
+      <h2 class="section-title" data-i18n="cats-title">Product Categories</h2>
       <div class="section-title-cn">产品分类</div>
     </div>
     <div class="cat-grid">
@@ -174,8 +174,8 @@
 <section class="section bg-light">
   <div class="section-inner">
     <div class="section-header">
-      <div class="section-eyebrow">Why Source Through Us</div>
-      <h2 class="section-title">Closer to the Source, Without the Hassle</h2>
+      <div class="section-eyebrow" data-i18n="why-eyebrow">Why Source Through Us</div>
+      <h2 class="section-title" data-i18n="why-title">Closer to the Source, Without the Hassle</h2>
       <div class="section-title-cn">为什么选择我们</div>
       <p class="section-desc">We give you factory-direct access to vetted Chinese manufacturers — and absorb the sourcing, quality-coordination and logistics work that usually slows buyers down.</p>
     </div>
@@ -256,9 +256,9 @@
 <!-- CTA STRIP -->
 <section class="section" style="background:var(--red); color:#fff; text-align:center; padding:48px 20px;">
   <div class="section-inner">
-    <h2 style="font-size:24px; font-weight:700; margin-bottom:8px;">Ready to request a quotation?</h2>
+    <h2 style="font-size:24px; font-weight:700; margin-bottom:8px;" data-i18n="cta-index-h2">Ready to request a quotation?</h2>
     <p style="font-size:14px; color:rgba(255,255,255,0.85); margin-bottom:24px;">Send us your product list and target volumes — we reply within one business day.</p>
-    <a href="contact.html" class="btn-outline" style="border-color:#fff;">Contact Sales Team →</a>
+    <a href="contact.html" class="btn-outline" style="border-color:#fff;" data-i18n="cta-index-btn">Contact Sales Team →</a>
   </div>
 </section>
 
@@ -277,32 +277,32 @@
       <p>Factory-direct sourcing of nutraceutical and cosmetic raw materials, capsules and packaging — connecting buyers to GMP-certified Chinese manufacturers.</p>
     </div>
     <div class="footer-col">
-      <h4>Products</h4>
+      <h4 data-i18n="footer-products">Products</h4>
       <ul>
-        <li><a href="products.html">Plant Extracts</a></li>
-        <li><a href="products.html">Mineral Chelates</a></li>
-        <li><a href="products.html">Amino Acids</a></li>
-        <li><a href="products.html">Empty Capsules</a></li>
-        <li><a href="products.html">Packaging</a></li>
+        <li><a href="products.html" data-i18n="footer-extracts">Plant Extracts</a></li>
+        <li><a href="products.html" data-i18n="footer-chelates">Mineral Chelates</a></li>
+        <li><a href="products.html" data-i18n="footer-amino">Amino Acids</a></li>
+        <li><a href="products.html" data-i18n="footer-capsules">Empty Capsules</a></li>
+        <li><a href="products.html" data-i18n="footer-packaging">Packaging</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Company</h4>
+      <h4 data-i18n="footer-company">Company</h4>
       <ul>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="about.html">How We Work</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="contact.html">Request Quote</a></li>
+        <li><a href="about.html" data-i18n="footer-about">About Us</a></li>
+        <li><a href="about.html" data-i18n="footer-how">How We Work</a></li>
+        <li><a href="contact.html" data-i18n="footer-contact-link">Contact</a></li>
+        <li><a href="contact.html" data-i18n="footer-quote">Request Quote</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Contact</h4>
+      <h4 data-i18n="footer-contact-title">Contact</h4>
       <ul>
         <li><a href="mailto:sales@sinovita-ingredients.com">sales@sinovita-ingredients.com</a></li>
-        <li><a href="tel:+862158887721">+86 21 5888 7721</a></li>
+        <li><a href="https://web.wechat.com/?lang=en">+86 21 5888 7721</a></li>
         <li>WeChat: SinoVita_Ingridients</li>
         <li><a href="#">Room 1806, Building 7, No. 4288 Qingshuihe Road, Pudong New Area, Shanghai 201210, China</a></li>
-        <li><img src="wechat-qr.png" alt="WeChat — SinoVita_Ingridients" style="width:120px;height:auto;margin-top:8px;border-radius:8px;background:#fff;padding:6px;"></li>
+        <li><img data-qr="1" src="" alt="WeChat — SinoVita_Ingridients" style="width:120px;height:auto;margin-top:8px;border-radius:8px;background:#fff;padding:6px;"><div style="font-size:12px;color:rgba(255,255,255,0.7);margin-top:6px;" data-i18n="qr-caption">Для связи с менеджером — наведи камеру</div></li>
       </ul>
     </div>
   </div>
@@ -313,5 +313,6 @@
 </footer>
 
 <script src="illustrations.js"></script>
+<script src="i18n.js"></script>
 </body>
 </html>
