@@ -564,3 +564,14 @@ footer {
   .footer-main { grid-template-columns: 1fr; }
   .form-row-2 { grid-template-columns: 1fr; }
 }
+
+/* Почта для заявок в шапке (видна на всех страницах) */
+.header-mail{display:flex;flex-direction:column;align-items:flex-end;margin-left:auto;margin-right:16px;line-height:1.2}
+.header-mail .hm-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--red);font-weight:700}
+.header-mail .hm-row{display:flex;align-items:center;gap:6px;margin-top:3px}
+.header-mail .hm-addr{font-size:15px;font-weight:700;color:var(--navy);text-decoration:none}
+.header-mail .hm-addr:hover{color:var(--red)}
+.hm-copy{width:28px;height:28px;border-radius:6px;border:1px solid #d5dbe5;background:#fff;color:var(--navy);cursor:pointer;display:grid;place-items:center}
+.hm-copy:hover{border-color:var(--red);color:var(--red)}.hm-copy.ok{border-color:#2e9e6a;color:#2e9e6a}
+@media (max-width:1100px){.header-mail .hm-label{display:none}.header-mail .hm-addr{font-size:13px}}
+@media (max-width:760px){.header-mail{display:none}}

@@ -34,7 +34,7 @@ en:{
   'c-label-email':'Email','c-label-phone':'Phone','c-label-wechat':'WeChat',
   'c-label-office':'Sourcing Office','c-label-hours':'Working Hours',
   'contact-qr-caption':'Scan to add us on WeChat · WeChat ID: SinoVita_Ingridients',
-  'form-h3':'Send an Inquiry','form-btn':'Send Inquiry'
+  'form-h3':'Send an Inquiry','form-btn':'Send Inquiry','hdr-mail-label':'Quotes & inquiries','form-ok':'Thank you! Your inquiry has been sent — we will reply within one business day.','form-err':'Could not send. Please email us at sales@sinovita-ingredients.com.'
 },
 zh:{
   'topbar-office':'📍 采购办公室 · 上海，中国 — 合作制造商遍布中国大陆',
@@ -68,7 +68,7 @@ zh:{
   'c-label-email':'电子邮件','c-label-phone':'电话','c-label-wechat':'微信',
   'c-label-office':'采购办公室','c-label-hours':'工作时间',
   'contact-qr-caption':'扫码添加微信 · 微信ID：SinoVita_Ingridients',
-  'form-h3':'发送询盘','form-btn':'发送'
+  'form-h3':'发送询盘','form-btn':'发送','hdr-mail-label':'询价与咨询','form-ok':'感谢！您的询盘已发送，我们将在一个工作日内回复。','form-err':'发送失败，请发送邮件至 sales@sinovita-ingredients.com。'
 },
 ru:{
   'topbar-office':'📍 Офис закупок · Шанхай, Китай — партнёрское производство по всему Китаю',
@@ -102,7 +102,7 @@ ru:{
   'c-label-email':'Email','c-label-phone':'Телефон','c-label-wechat':'WeChat',
   'c-label-office':'Офис закупок','c-label-hours':'Время работы',
   'contact-qr-caption':'Наведи камеру, чтобы добавить нас в WeChat · ID: SinoVita_Ingridients',
-  'form-h3':'Отправить запрос','form-btn':'Отправить'
+  'form-h3':'Отправить запрос','form-btn':'Отправить','hdr-mail-label':'Запросы цены','form-ok':'Спасибо! Запрос отправлен — ответим в течение рабочего дня.','form-err':'Не удалось отправить. Напишите на sales@sinovita-ingredients.com.'
 }
 };
 
@@ -139,5 +139,6 @@ function applyLang(){
   var imgs=document.querySelectorAll('[data-qr]');
   for(var i=0;i<imgs.length;i++){imgs[i].src=QR_SRC;}
 
+window.T=T;
 document.addEventListener('DOMContentLoaded',applyLang);
 })();

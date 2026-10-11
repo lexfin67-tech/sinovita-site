@@ -7,6 +7,7 @@
 <meta name="description" content="Contact SinoVita Ingredients for factory-direct quotations on nutraceutical and cosmetic raw materials, capsules and packaging.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
+<script>window.YM_ID=113603622;(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r)return}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(113603622,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});</script>
 </head>
 <body>
 
@@ -17,6 +18,7 @@
     <div class="topbar-right">
       <a href="mailto:sales@sinovita-ingredients.com">✉ sales@sinovita-ingredients.com</a>
       <a href="?lang=zh" class="lang-btn" data-lang="zh">中文</a><a href="?lang=en" class="lang-btn" data-lang="en">EN</a>
+      <a href="?lang=ru" class="lang-btn" data-lang="ru">RU</a>
     </div>
   </div>
 </div>
@@ -38,6 +40,7 @@
       <a href="about.html" data-i18n="nav-about">About</a>
       <a href="contact.html" class="active" data-i18n="nav-contact">Contact</a>
     </nav>
+    <div class="header-mail"><span class="hm-label" data-i18n="hdr-mail-label">Quotes &amp; inquiries</span><span class="hm-row"><a href="mailto:sales@sinovita-ingredients.com" class="hm-addr">sales@sinovita-ingredients.com</a><button type="button" class="hm-copy" data-copy="sales@sinovita-ingredients.com" aria-label="Copy email"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></span></div>
     <a href="contact.html" class="header-cta" data-i18n="nav-cta">Request Quote</a>
   </div>
 </header>
@@ -121,8 +124,8 @@
         <h3 data-i18n="form-h3">Send an Inquiry</h3>
         <p class="sub">Fill in the form below and our sales team will respond shortly.</p>
 
-        <!-- ⚠ Replace YOUR_FORM_ID with your Formspree form ID (see instructions) -->
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <form id="inquiry" action="/api/lead" method="POST" novalidate>
+          <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px" aria-hidden="true">
           <div class="form-row-2">
             <div class="form-row">
               <label>Name *</label>
@@ -160,6 +163,7 @@
             <textarea name="message" placeholder="e.g. Magnesium bisglycinate 20% — 500 kg/month; Empty capsules size 0 — 1M units; etc." required></textarea>
           </div>
           <button type="submit" class="form-submit" data-i18n="form-btn">Send Inquiry</button>
+          <p class="form-msg" style="display:none;font-weight:600;margin-top:10px"></p>
           <p class="form-note">We respond within one business day. Your details are used only to process this inquiry.</p>
         </form>
       </div>
@@ -222,5 +226,6 @@
 
 <script src="illustrations.js"></script>
 <script src="i18n.js"></script>
+<script src="site.js" defer></script>
 </body>
 </html>
