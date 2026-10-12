@@ -23,7 +23,22 @@ export async function onRequestPost({ request, env }) {
   if (!tok(env) || !env.LEADS) return new Response("not configured", { status: 503 });
   if (request.headers.get("X-Telegram-Bot-Api-Secret-Token") !== (await hookSecret(env))) return new Response("forbidden", { status: 403 });
   let u; try { u = await request.json(); } catch { return new Response("ok"); }
+  // диагностика: тип последнего апдейта (без персональных данных, кроме id чата)
+  { const x = u.message || u.channel_post || u.my_chat_member || u.edited_message || {};
+    try { await env.LEADS.put("tg:last_upd", JSON.stringify({ at: new Date().toISOString(), keys: Object.keys(u).filter((k) => k !== "update_id"), chat: x.chat ? { id: x.chat.id, type: x.chat.type } : null, text: String(x.text || "").slice(0, 40), st: u.my_chat_member?.new_chat_member?.status })); } catch {} }
+  // бота добавили в группу, а группа ещё не привязана → привязываем сразу (повторная привязка — только после отвязки)
+  const mc = u.my_chat_member;
+  if (mc && mc.chat && (mc.chat.type === "group" || mc.chat.type === "supergroup") && ["member", "administrator"].includes(mc.new_chat_member?.status)) {
+    if (!(await groupId(env))) {
+      await env.LEADS.put("tg:group", String(mc.chat.id));
+      await env.LEADS.put("tg:group_info", JSON.stringify({ id: mc.chat.id, title: mc.chat.title, by: mc.from?.id, at: new Date().toISOString(), auto: true }));
+      await api(env, "sendMessage", { chat_id: mc.chat.id, text: "✅ Группа привязана к SinoVita. Сюда будут приходить заявки с сайта и сообщения клиентов — отвечайте реплаем." });
+    }
+    return new Response("ok");
+  }
   const m = u.message; if (!m || !m.chat) return new Response("ok");
+  // группа стала супергруппой → id меняется, переносим привязку
+  if (m.migrate_to_chat_id && String(await groupId(env)) === String(m.chat.id)) { await env.LEADS.put("tg:group", String(m.migrate_to_chat_id)); return new Response("ok"); }
   const text = (m.text || "").trim(); const gid = await groupId(env);
   if (m.chat.type === "group" || m.chat.type === "supergroup") {
     if (/^\/bind(@\w+)?\s*$/.test(text)) {
