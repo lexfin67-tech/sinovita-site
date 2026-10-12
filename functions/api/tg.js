@@ -41,7 +41,9 @@ export async function onRequestPost({ request, env }) {
   if (m.migrate_to_chat_id && String(await groupId(env)) === String(m.chat.id)) { await env.LEADS.put("tg:group", String(m.migrate_to_chat_id)); return new Response("ok"); }
   const text = (m.text || "").trim(); const gid = await groupId(env);
   if (m.chat.type === "group" || m.chat.type === "supergroup") {
-    if (/^\/bind(@\w+)?\s*$/.test(text)) {
+    const botId = String(tok(env) || "").split(":")[0];
+    const joined = m.group_chat_created || (m.new_chat_members || []).some((x) => String(x.id) === botId);
+    if (/^\/bind(@\w+)?\s*$/.test(text) || (joined && !gid)) {
       if (gid && String(gid) !== String(m.chat.id)) { await api(env, "sendMessage", { chat_id: m.chat.id, text: "Бот уже привязан к другой группе." }); return new Response("ok"); }
       await env.LEADS.put("tg:group", String(m.chat.id));
       await env.LEADS.put("tg:group_info", JSON.stringify({ id: m.chat.id, title: m.chat.title, by: m.from?.id, at: new Date().toISOString() }));
