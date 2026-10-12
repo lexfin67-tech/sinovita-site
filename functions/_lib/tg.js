@@ -32,6 +32,12 @@ let setupDone = false;
 export async function ensureSetup(env, host) {
   if (setupDone || !tok(env) || !env.LEADS || host !== HOST) return;
   await ensureMenu(env);
+  // одноразовое подтверждение привязки группы (результат — в KV tg:hello)
+  const g = await groupId(env);
+  if (g && (await env.LEADS.get("tg:hello")) !== String(g)) {
+    const h = await api(env, "sendMessage", { chat_id: g, text: "✅ SinoVita (sinovita-ingredients.com): бот подключён к этой группе. Заявки с сайта и сообщения клиентов будут приходить сюда; ответ клиенту — реплаем на его сообщение." });
+    await env.LEADS.put(h.ok ? "tg:hello" : "tg:hello_error", h.ok ? String(g) : JSON.stringify(h).slice(0, 300));
+  }
   const sig = (await hookSecret(env)).slice(0, 8);
   if ((await env.LEADS.get("tg:hook")) === sig) { setupDone = true; return; }
   const me = await api(env, "getMe");
