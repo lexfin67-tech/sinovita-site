@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Clean-param: lang /
 
 Sitemap: https://sinovita-ingredients.com/sitemap.xml
