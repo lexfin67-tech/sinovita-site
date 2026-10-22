@@ -1,8 +1,9 @@
 // POST /api/lead — заявка с формы SinoVita. Журнал в KV LEADS; доставка — свой бот (если задан токен и группа)
 // или приёмник HIMFORMа (himforma.com/api/lead → группа владельца) с пометкой «SinoVita».
 import { groupId, tok } from "../_lib/tg.js";
+import { toCrm } from "../_lib/crm.js";
 const clean = (v) => String(v ?? "").replace(/[\u0000-\u001f\u007f]/g, " ").trim().slice(0, 2000);
-export async function onRequestPost({ request, env }) {
+export async function onRequestPost({ request, env, waitUntil }) {
   let d; try { d = await request.json(); } catch { return json({ ok: false, error: "bad_json" }, 400); }
   if (d.website) return json({ ok: true });
   const L = { page: clean(d.page), lang: clean(d.lang), name: clean(d.name), company: clean(d.company), email: clean(d.email), phone: clean(d.phone),
@@ -13,6 +14,7 @@ export async function onRequestPost({ request, env }) {
   const id = new Date().toISOString() + "-" + crypto.randomUUID().slice(0, 8);
   let stored = false;
   if (env.LEADS) { try { await env.LEADS.put("lead:" + id, JSON.stringify({ ...L, text }), { expirationTtl: 31536000 }); stored = true; } catch {} }
+  waitUntil(toCrm(env, { site: "SinoVita", page: L.page + (L.lang ? " [" + L.lang + "]" : ""), items: L.message, grade: L.category, name: L.name, contact: [L.email, L.phone].filter(Boolean).join(", "), company: L.company, id: "lead:" + id }));
   const chat = await groupId(env);
   if (tok(env) && chat) {
     const r = await fetch(`https://api.telegram.org/bot${tok(env)}/sendMessage`, { method: "POST", headers: { "Content-Type": "application/json" },
